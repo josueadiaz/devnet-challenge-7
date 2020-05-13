@@ -8,7 +8,7 @@ mrversion = '26.6.1'
 mxversion = '15.27'
 mvversion = '4.0'
 WebexRoomID = "Y2lzY29zcGFyazovL3VzL1JPT00vNWJiMmRiZjAtNmFkOC0xMWVhLWEzNmEtMDc0ZjMxN2Y0Njli"
-myWebexToken = "NDcxZDk1YTAtOGJhZS00ZmQyLWE2NDItMzJhYTNjNjUwMzBiMTdlYmQ4YzctN2Rl_PF84_2b89525d-d39b-4b8b-8814-2b235d777a10" #you will need to put your personal token here
+myWebexToken = "" #you will need to put your personal token here
 
 switch_firmware = f"switch-{msversion.replace('.','-')}"
 ap_firmware = f"wireless-{mrversion.replace('.','-')}"
@@ -53,3 +53,6 @@ print('Devices that will need to be manually checked:')
 for device in non_compliant_devices:
     print(f"Serial#: {device['serial']}, Model#: {device['model']}")
 
+#Post message to Teams
+teams_api = WebexTeamsAPI(access_token=myWebexToken)
+teams_api.messages.create(roomId=WebexRoomID, text='Report Completed')
